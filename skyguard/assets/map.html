@@ -1,0 +1,323 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+document.documentElement.dataset.theme =
+    new URLSearchParams(location.search).get('theme') === 'night' ? 'night' : 'klein';
+</script>
+<link rel="stylesheet" href="leaflet.css"><script src="leaflet.js"></script><script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+<style>
+@font-face{font-family:Noto;src:url('NotoSansSC.ttf');font-display:swap}
+:root[data-theme="night"]{
+ --ground:#0F1420;--surface:#171E2C;--ink:#E7EBF3;--muted:#8C96AA;
+ --pri:#F2A93B;--on-pri:#1A1206;--tonal:#232C3E;--tonal-ink:#C9D3E6;
+ --sel:#1F2A40;--line:#4F7BD9;--glass:#171E2CD9;--edge:#222B3D;
+ --pred:#7EA6FF;--dot:#F2A93B;--danger:#FF6F86;--warn:#F2A93B;--ok:#5ED39A;
+}
+:root{
+ --ground:#F4F4F1;--surface:#FFFFFF;--ink:#141414;--muted:#6E6E6A;
+ --pri:#1F3FD6;--on-pri:#FFFFFF;--tonal:#E8ECFD;--tonal-ink:#1F3FD6;
+ --sel:#EDF0FE;--line:#1F3FD6;--glass:#FFFFFFD9;--edge:transparent;
+ --pred:#1F3FD6;--dot:#1F3FD6;--danger:#D1344F;--warn:#B76B00;--ok:#0E8A5F;
+}
+*{box-sizing:border-box}
+html,body,#map{height:100%;margin:0;background:var(--ground);color:var(--ink);font-family:DengXian,Noto,sans-serif}
+::selection{background:var(--sel);color:var(--ink)}
+
+/* The paper image is rendered by Leaflet in its original colors. */
+:root[data-theme="night"]{--paper-pred:var(--line);--paper-error:#A6630B;--paper-danger:#C23655;--paper-ok:#198450}
+:root[data-theme="klein"]{--paper-pred:var(--pred);--paper-error:var(--warn);--paper-danger:var(--danger);--paper-ok:var(--ok)}
+.leaflet-container{font-family:DengXian,Noto,sans-serif;outline-color:var(--pri)}
+.leaflet-tooltip,.tag{border:0;border-radius:999px;background:var(--surface);color:var(--ink);box-shadow:0 2px 8px #00000026;padding:4px 9px;font-size:11.5px}
+.tag{white-space:nowrap;font-weight:600}
+.waypoint-dot{box-sizing:border-box;border:2px solid #fff;border-radius:50%;background:var(--paper-pred);box-shadow:0 1px 4px #0006}
+.waypoint-dot.takeoff-dot{background:#16835c;border-radius:4px}.waypoint-dot.over-height{background:#d49400}
+.waypoint-dot span{position:absolute;left:15px;top:-4px;white-space:nowrap;padding:2px 6px;bordeR-radius:6px;background:#fff;color:#242830;font:600 11px DengXian,sans-serif;box-shadow:0 1px 4px #0003}
+.tag.selected{background:var(--pri);color:var(--on-pri)}
+.leaflet-tooltip::before{display:none}
+.corner{position:absolute;top:12px;left:54px;z-index:800;background:var(--glass);color:var(--ink);padding:6px 11px;border-radius:999px;font-size:11.5px;box-shadow:0 2px 8px #00000026;pointer-events:none}
+.map-unavailable{position:absolute;inset:0;z-index:1100;display:grid;place-items:center;background:var(--ground);color:var(--ink);padding:28px;font-size:16px;text-align:center}
+.map-unavailable[hidden]{display:none}
+.map-pin{display:grid;place-items:center;border-radius:50%;background:var(--dot);border:2px solid white;color:var(--on-pri);font:600 11px "Segoe UI Variable",Bahnschrift,"Segoe UI",sans-serif;text-align:center}
+.map-pin::after{content:'';position:absolute;left:50%;bottom:-5px;width:6px;height:6px;background:var(--dot);border:solid white;border-width:0 1px 1px 0;transform:translateX(-50%) rotate(45deg)}
+.leaflet-control-attribution{font:11px DengXian,Noto,sans-serif;background:var(--glass)!important;color:var(--ink);padding:3px 6px!important;border-radius:8px 0 0}
+.leaflet-control-attribution a{color:var(--pri)}
+.leaflet-bar{border:0!important;box-shadow:0 2px 8px #00000026!important;overflow:hidden;border-radius:15px!important}
+.leaflet-bar a,.leaflet-bar a.leaflet-disabled{background:var(--surface);color:var(--tonal-ink);border-color:var(--tonal);width:30px;height:32px;line-height:32px}
+.leaflet-bar a.leaflet-disabled{color:var(--muted)}
+.leaflet-bar a:hover,.whole:hover{background:var(--tonal)}
+.whole{font:600 12px DengXian,Noto,sans-serif;background:var(--surface);color:var(--tonal-ink);border:0;padding:8px 12px;border-radius:999px;box-shadow:0 2px 8px #00000026;cursor:pointer}
+.whole:focus-visible,.leaflet-bar a:focus-visible{outline:2px solid var(--pri);outline-offset:-2px}
+</style></head><body><div id="map"></div><div class="corner" id="mapnote">正在加载官方长沙城区图…</div>
+<div class="map-unavailable" id="map-unavailable" hidden>此城市需要在线底图。也可以输入坐标后查询。</div>
+<script src="training-map.js"></script><script>
+let routeViewport=null, paperImage=null, trainingExtent=null, gridLayer;
+let routeFocus='';
+let bridge=null,selected='',payload=null,config=null,showRisk=true,ready=false,scenicFocus=null;
+const mapElement=document.getElementById('map');
+const unavailable=document.getElementById('map-unavailable');
+const map=L.map('map',{crs:L.CRS.Simple,preferCanvas:true,minZoom:-5,maxZoom:2,zoomSnap:.25,attributionControl:true}).setView([1750,2480],-1);
+const dynamic=L.layerGroup().addTo(map),riskLayer=L.layerGroup().addTo(map);
+let paperAttribution='';
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function status(text){document.getElementById('mapnote').textContent=text;if(bridge)bridge.mapStatus(text)}
+map.createPane('airspaceGrid');
+map.getPane('airspaceGrid').style.zIndex=350;
+map.getPane('airspaceGrid').style.pointerEvents='none';
+gridLayer=L.layerGroup().addTo(map);
+function focusPoint(p){if(config)map.panTo(project(p[1],p[0]),{animate:false})}
+function focusRoute(points){
+ if(!config||!points.length)return;
+ const bounds=L.latLngBounds(points.map(([x,y])=>project(y,x)));
+ map.fitBounds(bounds,{padding:[65,60],maxZoom:2.5,animate:false});
+}
+function reportViewport(){
+ if(!bridge||!config||!ready||!payload?.grid_visible||payload.city!=='changsha')return;
+ const b=map.getBounds(), corners=[unproject(b.getSouth(),b.getWest()),unproject(b.getSouth(),b.getEast()),
+  unproject(b.getNorth(),b.getWest()),unproject(b.getNorth(),b.getEast())];
+ const x=corners.map(p=>p[1]),y=corners.map(p=>p[0]);
+ bridge.mapViewport(Math.min(...x),Math.min(...y),Math.max(...x),Math.max(...y),map.getZoom()+14);
+}
+map.on('moveend',reportViewport);
+function drawGrid(cells,bounds){
+ const next=L.layerGroup();
+ if(config&&payload?.city==='changsha'&&payload.grid_visible){
+  for(const [w,s,e,n] of cells)L.polygon([project(s,w),project(s,e),project(n,e),project(n,w)],
+   {pane:'airspaceGrid',color:'#16835c',weight:0,fillOpacity:.27,interactive:false}).addTo(next);
+ }
+ next.addTo(map);
+ gridLayer.remove();
+ gridLayer=next;
+}
+function project(lat,lon){if(trainingExtent){const [w,s,e,n]=trainingExtent;return [(lat-s)*2800/(n-s),(lon-w)*4000/(e-w)]}const a=config.transform;const x=lon*a[0][0]+lat*a[1][0]+a[2][0],y=lon*a[0][1]+lat*a[1][1]+a[2][1];return [config.height-y,x]}
+function unproject(y,x){if(trainingExtent){const [w,s,e,n]=trainingExtent;return [s+(n-s)*y/2800,w+(e-w)*x/4000]}y=config.height-y;const a=config.transform,X=x-a[2][0],Y=y-a[2][1],det=a[0][0]*a[1][1]-a[1][0]*a[0][1];return [(a[0][0]*Y-a[0][1]*X)/det,(X*a[1][1]-Y*a[1][0])/det]}
+function home(){
+ if(payload?.training_bounds){
+  const [w,s,e,n]=payload.training_bounds;
+  map.fitBounds([project(s,w),project(n,e)],{animate:false,padding:[30,30]});
+ }else if(config)map.setView(project(28.190,112.975),-.25);
+}
+function whole(){if(trainingExtent){home();return}if(config){map.invalidateSize({pan:false});map.fitBounds([[0,0],[config.height,config.width]],{padding:[8,8],animate:false})}}
+fetch('map-provenance.json').then(r=>r.json()).then(data=>{
+ config=data;
+ const image=paperImage=L.imageOverlay(data.file,[[0,0],[data.height,data.width]],{interactive:false,alt:'湖南省自然资源厅监制的长沙市城区范围图，湘S（2024）151号'}).addTo(map);
+ image.once('load',()=>{ready=true;home();refreshNote();if(bridge)bridge.mapReady(1);draw();reportViewport()});
+ image.once('error',()=>status('官方底图未载入，请检查程序资源目录；观察列表仍可使用'));
+ paperAttribution='湖南省自然资源厅 · '+escapeHtml(data.review_number)+' · 演练叠加';
+ map.attributionControl.addAttribution(paperAttribution);
+ L.Control.Whole=L.Control.extend({onAdd(){const b=L.DomUtil.create('button','whole');b.textContent='全图';b.title='查看完整官方原图与署名';b.setAttribute('aria-label',b.title);L.DomEvent.disableClickPropagation(b);b.onclick=whole;return b}});new L.Control.Whole({position:'topleft'}).addTo(map);
+}).catch(()=>status('地图说明文件未载入，请检查安装资源'));
+new QWebChannel(qt.webChannelTransport,c=>{bridge=c.objects.bridge;if(ready){bridge.mapReady(1);reportViewport()}});
+function refreshNote(){
+ const different=Boolean(payload?.city&&payload.city!=='changsha');
+ unavailable.hidden=!different||!!trainingExtent;
+ if(trainingExtent){status('演练区块图 · 在线底图可显示街道与地标');return}
+ if(different){status('离线底图仅覆盖长沙。请使用在线地图或输入坐标。');return}
+ const source='湖南省自然资源厅 · '+config.review_number;
+ document.getElementById('mapnote').textContent=source;
+ if(bridge)bridge.mapStatus(source+(payload?.public?' · 纸图仅供概览，查询请填写坐标':' · 纸图仅供演练概览'));
+}
+map.on('click',e=>{if(!config||!bridge||!unavailable.hidden)return;
+ if(payload?.flight_control||payload?.public&&!payload.route_editing)return;
+ const x=e.latlng.lng,y=config.height-e.latlng.lat;
+ if(!trainingExtent&&(x<326||x>4635||y<200||y>3315||(x>3630&&y>2580)||(x<1370&&y<337))){status('请在地图主体内选择位置，标题和图例区域不可点选');return}
+ const ll=unproject(e.latlng.lat,e.latlng.lng);bridge.mapClicked(ll[0],ll[1]);});
+function updateScene(p){
+ const isPreview=scene=>!!scene?.routes?.some(route=>route.style==='preview');
+ if(ready&&payload){
+  if(!isPreview(payload)&&isPreview(p))routeViewport=[map.getZoom(),map.getCenter()];
+  if(isPreview(payload)&&!isPreview(p)){
+   if(routeViewport&&payload.city===p.city&&p.public)map.setView(routeViewport[1],routeViewport[0],{animate:false});
+   routeViewport=null;
+  }
+ }
+ const contextChanged=payload?.city!==p.city||payload?.public!==p.public;
+ const scenarioChanged=JSON.stringify(payload?.training_bounds)!==JSON.stringify(p.training_bounds);
+ const wasGrid=payload?.grid_visible;
+ payload=p;
+ if(scenarioChanged||contextChanged){
+  if(!p.public&&p.city!=='changsha'&&p.training_bounds){
+   trainingExtent=p.training_bounds;
+   if(paperImage&&map.hasLayer(paperImage)){
+    paperImage.remove();
+    map.attributionControl.removeAttribution(paperAttribution);
+   }
+  }else{
+   trainingExtent=null;
+   if(paperImage&&!map.hasLayer(paperImage)){
+    paperImage.addTo(map);
+    map.attributionControl.addAttribution(paperAttribution);
+   }
+  }
+  if(ready&&config)home();
+ }
+ if(bridge)TrainingMap.fly(mapElement,!!p.flight_control,point=>{
+  const xy=map.containerPointToLatLng([point.x,point.y]),p=unproject(xy.lat,xy.lng);
+  return [p[1],p[0]];
+ },bridge,(x,y)=>map.panBy([-x,-y],{animate:false}));
+ if((contextChanged||scenarioChanged)&&config&&ready){gridLayer.clearLayers();refreshNote()}
+ if(wasGrid&&!p.grid_visible)drawGrid([],[]);
+ if(!wasGrid&&p.grid_visible)reportViewport();
+ draw();
+}
+function setTheme(name){
+ const theme=name==='night'?'night':'klein';
+ if(document.documentElement.dataset.theme===theme)return;
+ document.documentElement.dataset.theme=theme;draw();
+}
+function draw(){if(!payload||!config||!ready)return;dynamic.clearLayers();riskLayer.clearLayers();
+ const style=getComputedStyle(document.documentElement);
+ const css=name=>style.getPropertyValue('--'+name).trim();
+ const prediction=css('paper-pred'),danger=css('paper-danger'),warning=css('paper-error'),ok=css('paper-ok');
+ if(showRisk)for(const c of payload.grid){const color=c[2]>=50?danger:c[2]>=30?warning:ok;
+  L.rectangle([project(c[0]-.00048,c[1]-.00055),project(c[0]+.00048,c[1]+.00055)],{color,weight:0,fillOpacity:.22,interactive:false}).addTo(riskLayer);}
+ const scale=config.metres_per_pixel_approx;
+ setAircraft(payload.aircraft||[]);
+ for(const zone of payload.zones||[]){
+  const color=zone.kind==='restriction'?danger:zone.kind==='plan'||zone.kind==='filing'?
+   (zone.filing_style==='past'?'#788393':prediction):ok;
+  const shape=L.polygon(zone.rings.map(r=>r.map(([lon,lat])=>project(lat,lon))),
+    {color,weight:zone.highlight?2:1,fillOpacity:zone.kind==='zone'?0:zone.highlight?.15:.08,interactive:zone.kind==='filing',
+     bubblingMouseEvents:false,dashArray:zone.filing_style==='future'?'5 5':null}).addTo(dynamic);
+  if(zone.kind==='filing')shape.on('click',()=>bridge.selectEvent(zone.id));
+ }
+ 
+ const position=([lon,lat])=>project(lat,lon);
+ if(!(payload.routes||[]).some(r=>r.style==='preview'||r.style==='flight'))routeFocus='';
+ for(const route of payload.routes||[]){
+  const edit=route.style==='edit',duty=route.style==='filing';
+  if(route.subject)L.marker(position(route.subject),{interactive:false,
+   icon:L.divIcon({className:'tag selected',html:escapeHtml(route.subject_name),iconSize:[88,22],iconAnchor:[44,22]})}).addTo(dynamic);
+  const addLine=(path,color,style)=>{
+   const pts=path.map(position);
+   if(path.length<2||path.every(p=>p[0]===path[0][0]&&p[1]===path[0][1])){
+    if(!duty)L.circleMarker(pts[0],{color,radius:9,fillOpacity:0,interactive:false}).addTo(dynamic);
+    return;
+   }
+   const track=L.polyline(pts,{color,weight:4,dashArray:style,interactive:duty,bubblingMouseEvents:false}).addTo(dynamic);
+   if(duty){track.on('click',()=>bridge.selectEvent(route.id));return}
+   if(map.getZoom()<-1)return;
+   for(let i=1;i<pts.length;i++){
+    const a=pts[i-1],b=pts[i],x=b[1]-a[1],y=a[0]-b[0];
+    if(Math.hypot(x,y)<9)continue;
+    const angle=Math.atan2(y,x)*180/Math.PI;
+    L.marker([(a[0]+b[0])/2,(a[1]+b[1])/2],{interactive:false,icon:L.divIcon({className:'',
+     html:'<span style="display:block;color:white;font:bold 14px sans-serif;transform:rotate('+angle+'deg)">›</span>',
+     iconSize:[12,14],iconAnchor:[6,8]})}).addTo(dynamic);
+   }
+  };
+  if(route.legs?.length||route.segments?.length){
+   for(const leg of route.segments)addLine(leg.path,leg.state==='restricted'?danger:leg.state==='clear'?prediction:warning);
+  }else if(!route.itinerary?.length)addLine(route.path,route.style==='actual'?'#347a78':prediction,duty?'7 6':null);
+  for(const phase of route.itinerary||[]){
+   if(phase.phase==='起飞爬升'||phase.phase==='降落')continue;
+   const returning=phase.phase==='返航',filming=phase.phase==='拍摄';
+   if(!returning&&!filming&&route.segments?.length)continue;
+   addLine(phase.path,filming?'#6941cf':returning?'#45566e':prediction,returning?'7 6':null);
+  }
+  for(const [i,shot] of (route.shots||[]).entries()){
+   if(shot.id===route.selected_shot&&shot.path?.length)L.polyline(shot.path.map(position),
+    {color:'#803fff',weight:8,interactive:false}).addTo(dynamic);
+   const pin=L.marker(position(shot.point),{bubblingMouseEvents:false,icon:L.divIcon({
+    className:'marker selected',html:escapeHtml((i+1)+' '+shot.title),iconSize:null
+   })}).addTo(dynamic);
+   pin.on('click',()=>bridge.selectEvent('photo-shot:'+shot.id));
+  }
+  if(duty||route.style==='actual')continue;
+  if((route.style==='preview'||route.style==='flight')&&routeFocus!==route.key){
+   routeFocus=route.key;
+   map.fitBounds(L.latLngBounds(route.path.map(position)),{padding:[65,60],maxZoom:2.5,animate:false});
+  }
+  L.marker(position(route.takeoff),{interactive:false,icon:L.divIcon({className:'waypoint-dot takeoff-dot',
+   html:'<span>'+(route.itinerary?.length?(route.provisional_takeoff?'候选起降点':'起降点'):(route.provisional_takeoff?'候选起飞点':'起飞点'))+'</span>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(dynamic);
+  const points=route.waypoints||[];
+  if(edit&&payload.route_editing)for(let i=1;i<points.length;i++){
+   const a=points[i-1],b=points[i],m=[(a[0]+b[0])/2,(a[1]+b[1])/2];
+   if(a[0]===b[0]&&a[1]===b[1])continue;
+   const marker=L.marker(position(m),{bubblingMouseEvents:false,title:'插入航点',
+    icon:L.divIcon({className:'tag',html:'＋',iconSize:[24,22],iconAnchor:[12,11]})}).addTo(dynamic);
+   marker.on('click',()=>bridge.routeAction(payload.city,'insert',i,m[0],m[1]));
+  }
+  (route.shots?.length&&!edit?[]:points).forEach(([lon,lat,h],index)=>{
+   const marker=L.marker(position([lon,lat]),{draggable:edit,interactive:edit,bubblingMouseEvents:false,
+    icon:L.divIcon({className:'waypoint-dot'+(h>(route.heightLimit||120)?' over-height':''),
+      html:'<span>'+(index+1)+' · '+escapeHtml(h)+' 米</span>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(dynamic);
+   if(edit){
+    marker.on('click',()=>bridge.routeAction(payload.city,'select',index,0,0));
+    marker.on('contextmenu',()=>bridge.routeAction(payload.city,'remove',index,0,0));
+    marker.on('dragend',()=>{
+     const t=marker.getLatLng(),p=unproject(t.lat,t.lng);
+     bridge.routeAction(payload.city,'move',index,p[1],p[0]);
+    });
+   }
+  });
+  if(route.current)L.circleMarker(position(route.current),{color:'white',fillColor:prediction,
+   fillOpacity:1,radius:7,weight:2,interactive:false}).addTo(dynamic);
+ }
+ for(const [index,pin] of (payload.pins||[]).entries()){
+  const position=project(pin.lat,pin.lon);
+  if(payload.public){
+   L.marker(position,{interactive:false,icon:L.divIcon({className:'map-pin',
+     html:escapeHtml(pin.name),iconSize:[21,21],iconAnchor:[10,27]})}).addTo(dynamic);
+  }else{
+   const direction=index%2?'top':'right';
+   const offset=direction==='top'?[0,-8]:[7,0];
+   L.circleMarker(position,{radius:5,color:prediction,interactive:false})
+      .bindTooltip(escapeHtml(pin.name),{permanent:true,direction,offset,className:'tag'}).addTo(dynamic);
+  }
+ }
+ for(const a of payload.areas)L.circle(project(a.lat,a.lon),{radius:a.radius_m/scale,color:ok,weight:1,dashArray:'5 6',fillOpacity:.035}).bindTooltip(escapeHtml(a.name)+' · 模拟活动范围').addTo(dynamic);
+ if(payload.public&&payload.aerial){
+  const aerial=payload.aerial, position=([lon,lat])=>project(lat,lon);
+  if(aerial.line.length>1)L.polyline(aerial.line.map(position),{color:prediction,weight:2,interactive:false}).addTo(dynamic);
+  if(aerial.segment.length===2)L.polyline(aerial.segment.map(position),{color:prediction,weight:5,interactive:false}).addTo(dynamic);
+  const weather=L.circleMarker(position(aerial.point),{radius:5,color:prediction,weight:3,interactive:false}).addTo(dynamic);
+  weather.bindTooltip('◆ 天气查询点'+(aerial.time?' · '+escapeHtml(aerial.time):''),{permanent:true,direction:'top',className:'tag'});
+  for(const spot of aerial.scenes){
+   const chosen=spot.id===aerial.selected;
+   const marker=L.circleMarker(position(spot.point),{radius:chosen?8:5,color:prediction,weight:chosen?3:2,
+    fillColor:prediction,fillOpacity:.7,bubblingMouseEvents:false}).addTo(dynamic);
+   marker.bindTooltip(spot.number+' '+escapeHtml(spot.name),{permanent:true,direction:'right',className:'tag'+(chosen?' selected':'')});
+   marker.on('click',()=>{if(bridge)bridge.selectEvent(spot.id)});
+   if(chosen&&scenicFocus!==aerial.focus){scenicFocus=aerial.focus;map.panTo(position(spot.point));}
+  }
+ }
+ for(const o of payload.observations){if(o.lat===null||o.linked_track)continue;
+  const color=o.priority==='优先核验'?danger:prediction;
+  if(o.history?.length>1)L.polyline(o.history.map(p=>project(p.lat,p.lon)),{color,weight:2,interactive:false}).addTo(dynamic);
+  if(o.track_state==='仅目击待核实')L.circle(project(o.lat,o.lon),{radius:(o.accuracy_m+config.display_registration_allowance_m)/scale,
+   color:warning,fillColor:warning,weight:1,fillOpacity:.12,interactive:false}).addTo(dynamic);
+  L.polyline(o.prediction.map(p=>project(p.lat,p.lon)),{color:prediction,weight:o.id===selected?3:2,dashArray:'5 5',interactive:false}).addTo(dynamic);
+  const last=o.prediction[o.prediction.length-1];
+  if(last)L.circle(project(last.lat,last.lon),{radius:(last.radius_m+config.display_registration_allowance_m)/scale,color:prediction,weight:1,dashArray:'3 6',fillOpacity:.035,interactive:false}).addTo(dynamic);
+  const mark=L.circleMarker(project(o.lat,o.lon),{radius:o.id===selected?8:6,color:'#fff',weight:2,fillColor:o.age>45?css('muted'):o.id===selected?css('dot'):color,fillOpacity:1}).addTo(dynamic);
+  const direction=o.id==='obs-b'?'right':o.id==='obs-c'?'bottom':'left';
+  mark.bindTooltip(escapeHtml(o.name),{permanent:true,direction,offset:direction==='left'?[-9,0]:direction==='right'?[9,0]:[0,9],className:'tag'+(o.id===selected?' selected':'')});
+  mark.on('click',e=>{L.DomEvent.stopPropagation(e);if(bridge)bridge.selectEvent(o.id)});
+ }}
+let photoDot=null, photoRay=null;
+function setPhotoFrame(frame){
+ if(!config||!ready)return;
+ if(!frame){if(photoDot){photoDot.remove();photoRay.remove();photoDot=null;photoRay=null}return}
+ const point=project(frame.point[1],frame.point[0]);
+ const path=frame.ray.length?frame.ray.map(([x,y])=>project(y,x)):[point,point];
+ if(!photoDot){
+  photoDot=L.marker(point,{interactive:false,zIndexOffset:900,icon:L.divIcon({
+   className:'photo-craft',iconSize:[29,29],iconAnchor:[15,15],
+   html:'<img src="aircraft.svg" alt="" style="display:block;width:29px;height:29px;background:#b3c8ff;border-radius:8px;padding:3px;box-shadow:0 2px 7px #172b6840">'
+  })}).addTo(map);
+  photoRay=L.polyline(path,{color:'#a542be',weight:3,dashArray:'5 4',interactive:false}).addTo(map);
+ }
+ photoDot.setLatLng(point);
+ const image=photoDot.getElement()?.querySelector('img');
+ if(image)image.style.transform='rotate('+(frame.body_heading||0)+'deg)';
+ photoRay.setLatLngs(path);
+}
+function setAircraft(list){
+ if(!config||!ready)return;
+ TrainingMap.update(list,mapElement,([lon,lat])=>map.latLngToContainerPoint(project(lat,lon)),
+                    id=>bridge.selectEvent(id),'aircraft.svg',payload?.flight_follow?([lon,lat])=>map.panTo(project(lat,lon),{animate:false}):null);
+}
+map.on('move zoom resize',()=>TrainingMap.paint());
+function selectEvent(id){selected=id;draw()}
+function setRisk(v){showRisk=v;draw()}
+new ResizeObserver(()=>requestAnimationFrame(()=>map.invalidateSize({pan:false,debounceMoveend:true}))).observe(mapElement);
+</script></body></html>

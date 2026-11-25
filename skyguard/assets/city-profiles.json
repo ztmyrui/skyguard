@@ -1,0 +1,29 @@
+{
+  "version": "P10.1",
+  "cities": {
+    "changsha": {
+      "grade": "A",
+      "coverage": "湖南可计算空域",
+      "station": [
+        112.946,
+        28.174
+      ]
+    },
+    "guangzhou": {
+      "grade": "B",
+      "coverage": "公开公告"
+    },
+    "shanghai": {
+      "grade": "B",
+      "coverage": "公开公告"
+    },
+    "shenzhen": {
+      "grade": "B",
+      "coverage": "公开公告"
+    },
+    "hangzhou": {
+      "grade": "B",
+      "coverage": "公开公告"
+    }
+  }
+}

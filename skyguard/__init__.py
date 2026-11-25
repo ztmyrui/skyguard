@@ -1,0 +1,2 @@
+"""Skyguard civil observation and coordination desktop application."""
+__version__ = "0.16.0"

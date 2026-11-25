@@ -1,0 +1,1415 @@
+{
+  "changsha": {
+    "sources": [
+      "https://whhlyt.hunan.gov.cn/whhlyt/news/mtjj/202509/t20250924_33813516.html",
+      "https://www.hunan.gov.cn/topic/kjbh/hmszfz/gzjxs8/szdt08/202606/t20260623_34009544.html",
+      "https://hunan.gov.cn/hnszf/c101474/202108/t20210827_20403826.html"
+    ],
+    "places": [
+      [
+        "橘子洲",
+        112.9617,
+        28.1857,
+        "洲岛",
+        "Orange Isle Changsha",
+        1,
+        {
+          "tags": [
+            "江河",
+            "日出日落"
+          ],
+          "axis_deg": 350,
+          "takeoffs": [
+            [
+              112.963135,
+              28.188948
+            ]
+          ],
+          "standoff_m": 120,
+          "avoid_m": 0,
+          "source": "工程整理",
+          "viewpoint_source": "https://commons.wikimedia.org/wiki/File:Xiang_River_and_Orange_Isle_Bridge,_Changsha.jpg"
+        }
+      ],
+      [
+        "岳麓山",
+        112.9333,
+        28.1868,
+        "山景",
+        "Yuelu Mountain Changsha",
+        1,
+        {
+          "tags": [
+            "山景",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "杜甫江阁",
+        112.9663,
+        28.1822,
+        "历史建筑",
+        "Du Fu River Pavilion Changsha",
+        1,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 350,
+          "takeoffs": null,
+          "standoff_m": 125,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "长沙滨江文化园",
+        112.9718,
+        28.2457,
+        "滨水",
+        "Changsha Riverside Culture Park",
+        0,
+        {
+          "tags": [
+            "江河",
+            "日出日落"
+          ],
+          "axis_deg": 180,
+          "takeoffs": [
+            [
+              112.972946,
+              28.245514
+            ]
+          ],
+          "standoff_m": 130,
+          "avoid_m": 0,
+          "source": "工程整理",
+          "viewpoint_source": "https://commons.wikimedia.org/wiki/File:长沙滨江文化园处所见的湘江风光_-_with_Huawei_watermark.jpg"
+        }
+      ],
+      [
+        "后湖国际艺术园",
+        112.9463,
+        28.1668,
+        "公园",
+        "Houhu Changsha",
+        0,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "黄兴南路步行街",
+        112.9764,
+        28.1879,
+        "街区",
+        "Huangxing Road Changsha",
+        0,
+        {
+          "tags": [
+            "历史建筑",
+            "商圈夜景"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "太平老街",
+        112.9684,
+        28.1962,
+        "街区",
+        "Taiping Street Changsha",
+        0,
+        {
+          "tags": [
+            "历史建筑",
+            "商圈夜景"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "白果园休闲街区",
+        112.9789,
+        28.1926,
+        "街区",
+        "Baiguoyuan Changsha",
+        0,
+        {
+          "tags": [
+            "历史建筑",
+            "商圈夜景"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "潮宗街",
+        112.9707,
+        28.2055,
+        "街区",
+        "Chaozong Street Changsha",
+        0,
+        {
+          "tags": [
+            "历史建筑",
+            "商圈夜景"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "南郊公园",
+        112.9654,
+        28.1382,
+        "公园",
+        "Changsha Nanjiao Park",
+        0,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "天心阁",
+        112.9795,
+        28.1861,
+        "历史建筑",
+        "Tianxin Pavilion Changsha",
+        2,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "湖南博物院",
+        112.9881,
+        28.217,
+        "历史建筑",
+        "Hunan Museum Changsha",
+        2,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "湖南第一师范旧址",
+        112.9719,
+        28.1703,
+        "历史建筑",
+        "Hunan First Normal University Changsha",
+        2,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "长沙湘江风光带",
+        112.9518,
+        28.1594,
+        "滨水",
+        "Xiang River Changsha",
+        0,
+        {
+          "tags": [
+            "江河",
+            "日出日落"
+          ],
+          "axis_deg": 350,
+          "takeoffs": null,
+          "standoff_m": 125,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "猴子石大桥",
+        112.9517,
+        28.1349,
+        "桥梁",
+        "Houzishi Bridge Changsha",
+        0,
+        {
+          "tags": [
+            "桥梁",
+            "日出日落"
+          ],
+          "axis_deg": 85,
+          "takeoffs": null,
+          "standoff_m": 170,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "梅溪湖",
+        112.8963,
+        28.1883,
+        "湖景",
+        "Meixi Lake Changsha",
+        0,
+        {
+          "tags": [
+            "湖面",
+            "日出日落"
+          ],
+          "axis_deg": 85,
+          "takeoffs": null,
+          "standoff_m": 110,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ]
+    ]
+  },
+  "guangzhou": {
+    "sources": [
+      "https://wglj.gz.gov.cn/attachment/7/7610/7610801/9675132.pdf",
+      "https://wglj.gz.gov.cn/zlxz/content/post_10878688.html"
+    ],
+    "places": [
+      [
+        "广州塔",
+        113.3192,
+        23.1085,
+        "城市地标",
+        "Canton Tower Guangzhou",
+        1,
+        {
+          "tags": [
+            "城市天际线",
+            "高楼"
+          ],
+          "axis_deg": 70,
+          "takeoffs": null,
+          "standoff_m": 195,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "白云山",
+        113.2959,
+        23.1854,
+        "山景",
+        "Baiyun Mountain Guangzhou",
+        1,
+        {
+          "tags": [
+            "山景",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "海心沙",
+        113.3233,
+        23.1143,
+        "洲岛",
+        "Haixinsha Guangzhou",
+        0,
+        {
+          "tags": [
+            "江河",
+            "日出日落"
+          ],
+          "axis_deg": 85,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "中山纪念堂",
+        113.2643,
+        23.1358,
+        "历史建筑",
+        "Sun Yat-sen Memorial Hall Guangzhou",
+        0,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "陈家祠",
+        113.2401,
+        23.1296,
+        "历史建筑",
+        "Chen Clan Ancestral Hall Guangzhou",
+        1,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "越秀公园",
+        113.2634,
+        23.1444,
+        "公园",
+        "Yuexiu Park Guangzhou",
+        1,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "广东省博物馆",
+        113.3238,
+        23.1172,
+        "城市地标",
+        "Guangdong Museum Guangzhou",
+        1,
+        {
+          "tags": [
+            "城市天际线",
+            "高楼"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "南越王博物院",
+        113.2582,
+        23.1414,
+        "历史建筑",
+        "Nanyue King Museum Guangzhou",
+        1,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "黄花岗公园",
+        113.2952,
+        23.1402,
+        "公园",
+        "Huanghuagang Park Guangzhou",
+        1,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "长隆旅游度假区",
+        113.3269,
+        23.0033,
+        "公园",
+        "Chimelong Guangzhou",
+        1,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "莲花山旅游区",
+        113.5029,
+        22.9714,
+        "山景",
+        "Lotus Hill Guangzhou",
+        1,
+        {
+          "tags": [
+            "山景",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "岭南印象园",
+        113.4037,
+        23.0405,
+        "街区",
+        "Lingnan Impression Park Guangzhou",
+        1,
+        {
+          "tags": [
+            "历史建筑",
+            "商圈夜景"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "南沙滨海湿地景区",
+        113.6361,
+        22.5993,
+        "滨水",
+        "Nansha Wetland Guangzhou",
+        1,
+        {
+          "tags": [
+            "江河",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "宝墨园",
+        113.3196,
+        22.8973,
+        "园林",
+        "Baomo Garden Guangzhou",
+        1,
+        {
+          "tags": [
+            "公园绿地",
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "沙湾古镇",
+        113.3272,
+        22.9089,
+        "街区",
+        "Shawan Ancient Town Guangzhou",
+        1,
+        {
+          "tags": [
+            "历史建筑",
+            "商圈夜景"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ]
+    ]
+  },
+  "shanghai": {
+    "sources": [
+      "https://www.shanghai.gov.cn/shanghai/newshanghai/shgl2025.pdf",
+      "https://www.shanghai.gov.cn/pdwl/index.html",
+      "https://www.shanghai.gov.cn/gwk/search/content/cf46474f-4259-4087-ada5-105e2ec94971"
+    ],
+    "places": [
+      [
+        "外滩",
+        121.4904,
+        31.2397,
+        "滨水",
+        "The Bund Shanghai",
+        0,
+        {
+          "tags": [
+            "江河",
+            "日出日落"
+          ],
+          "axis_deg": 348,
+          "takeoffs": null,
+          "standoff_m": 125,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "东方明珠广播电视塔",
+        121.4952,
+        31.2416,
+        "城市地标",
+        "Oriental Pearl Tower Shanghai",
+        0,
+        {
+          "tags": [
+            "城市天际线",
+            "高楼"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "豫园",
+        121.4921,
+        31.2272,
+        "园林",
+        "Yu Garden Shanghai",
+        2,
+        {
+          "tags": [
+            "公园绿地",
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "世纪公园",
+        121.5513,
+        31.2166,
+        "公园",
+        "Century Park Shanghai",
+        1,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "上海世博文化公园",
+        121.48,
+        31.1765,
+        "公园",
+        "Expo Culture Park Shanghai",
+        1,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "朱家角古镇",
+        121.0529,
+        31.1111,
+        "街区",
+        "Zhujiajiao Shanghai",
+        0,
+        {
+          "tags": [
+            "历史建筑",
+            "商圈夜景"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "上海野生动物园",
+        121.7166,
+        31.0533,
+        "公园",
+        "Shanghai Wild Animal Park",
+        0,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "北外滩来福士",
+        121.5019,
+        31.2579,
+        "城市地标",
+        "North Bund Raffles City Shanghai",
+        0,
+        {
+          "tags": [
+            "城市天际线",
+            "高楼"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "中共一大会址",
+        121.475,
+        31.2188,
+        "历史建筑",
+        "First Congress Site Shanghai",
+        0,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "人民广场",
+        121.4751,
+        31.2317,
+        "城市地标",
+        "People's Square Shanghai",
+        2,
+        {
+          "tags": [
+            "城市天际线",
+            "高楼"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "上海迪士尼乐园",
+        121.6677,
+        31.1441,
+        "公园",
+        "Shanghai Disneyland",
+        0,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "上海中心大厦",
+        121.5056,
+        31.2336,
+        "城市地标",
+        "Shanghai Tower",
+        0,
+        {
+          "tags": [
+            "城市天际线",
+            "高楼"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "上海博物馆",
+        121.4752,
+        31.2302,
+        "历史建筑",
+        "Shanghai Museum",
+        0,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "上海海洋水族馆",
+        121.4991,
+        31.2421,
+        "城市地标",
+        "Shanghai Ocean Aquarium",
+        1,
+        {
+          "tags": [
+            "城市天际线",
+            "高楼"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ]
+    ]
+  },
+  "shenzhen": {
+    "sources": [
+      "https://wtl.sz.gov.cn/ggfw/lyl/jqjdylb/index.html",
+      "https://smartum.sz.gov.cn/upip/m/parkonline/citypark/home"
+    ],
+    "places": [
+      [
+        "世界之窗",
+        113.968,
+        22.5344,
+        "公园",
+        "Window of the World Shenzhen",
+        0,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "锦绣中华民俗文化村",
+        113.9874,
+        22.5342,
+        "园林",
+        "Splendid China Folk Village Shenzhen",
+        0,
+        {
+          "tags": [
+            "公园绿地",
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "欢乐谷",
+        113.9788,
+        22.542,
+        "公园",
+        "Happy Valley Shenzhen",
+        0,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "欢乐海岸",
+        113.9941,
+        22.5239,
+        "滨水",
+        "OCT Harbour Shenzhen",
+        0,
+        {
+          "tags": [
+            "江河",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "观澜湖旅游休闲度假区",
+        114.0859,
+        22.7175,
+        "园林",
+        "Mission Hills Shenzhen",
+        0,
+        {
+          "tags": [
+            "公园绿地",
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "东部华侨城",
+        114.303,
+        22.62,
+        "公园",
+        "OCT East Shenzhen",
+        0,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "青青世界",
+        113.9125,
+        22.5008,
+        "公园",
+        "Evergreen Resort Shenzhen",
+        0,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "仙湖植物园",
+        114.177,
+        22.5797,
+        "园林",
+        "Fairy Lake Botanical Garden Shenzhen",
+        0,
+        {
+          "tags": [
+            "公园绿地",
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "光明农场大观园",
+        113.9377,
+        22.7805,
+        "园林",
+        "Guangming Farm Shenzhen",
+        0,
+        {
+          "tags": [
+            "公园绿地",
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "欢乐港湾",
+        113.8918,
+        22.5469,
+        "滨水",
+        "OH Bay Shenzhen",
+        0,
+        {
+          "tags": [
+            "江河",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 100,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "莲花山公园",
+        114.0542,
+        22.5545,
+        "公园",
+        "Lianhuashan Park Shenzhen",
+        1,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "梧桐山风景名胜区",
+        114.2142,
+        22.5793,
+        "山景",
+        "Wutong Mountain Shenzhen",
+        1,
+        {
+          "tags": [
+            "山景",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "太子湾滨海岸线公园",
+        113.9132,
+        22.4758,
+        "滨水",
+        "Taiziwan Shenzhen",
+        1,
+        {
+          "tags": [
+            "江河",
+            "日出日落"
+          ],
+          "axis_deg": 65,
+          "takeoffs": null,
+          "standoff_m": 140,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "深圳野生动物园",
+        113.973,
+        22.6025,
+        "公园",
+        "Shenzhen Safari Park",
+        0,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ]
+    ]
+  },
+  "hangzhou": {
+    "sources": [
+      "https://wgly.hangzhou.gov.cn/module/download/downfile.jsp?classid=0&filename=c3ccb4250d3143a09047ee20fbe1170c.pdf",
+      "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web3148/site/attach/0/5b9c5d5cfedd48dd815c2d9f0cb685b0.pdf"
+    ],
+    "places": [
+      [
+        "断桥残雪",
+        120.1495,
+        30.2599,
+        "桥梁",
+        "Broken Bridge West Lake Hangzhou",
+        0,
+        {
+          "tags": [
+            "桥梁",
+            "日出日落"
+          ],
+          "axis_deg": 315,
+          "takeoffs": null,
+          "standoff_m": 130,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "三潭印月",
+        120.1423,
+        30.2378,
+        "湖景",
+        "Three Pools Mirroring the Moon Hangzhou",
+        0,
+        {
+          "tags": [
+            "湖面",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "雷峰塔",
+        120.1477,
+        30.2319,
+        "历史建筑",
+        "Leifeng Pagoda Hangzhou",
+        0,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "苏堤春晓",
+        120.1347,
+        30.2417,
+        "湖景",
+        "Su Causeway West Lake Hangzhou",
+        0,
+        {
+          "tags": [
+            "湖面",
+            "日出日落"
+          ],
+          "axis_deg": 351,
+          "takeoffs": null,
+          "standoff_m": 140,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "岳王庙",
+        120.1294,
+        30.2518,
+        "历史建筑",
+        "Yue Fei Temple Hangzhou",
+        0,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "灵隐寺",
+        120.1008,
+        30.239,
+        "历史建筑",
+        "Lingyin Temple Hangzhou",
+        0,
+        {
+          "tags": [
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "西溪湿地",
+        120.0624,
+        30.2681,
+        "滨水",
+        "Xixi Wetland Hangzhou",
+        0,
+        {
+          "tags": [
+            "江河",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "西泠印社",
+        120.1346,
+        30.2531,
+        "园林",
+        "Xiling Seal Society Hangzhou",
+        0,
+        {
+          "tags": [
+            "公园绿地",
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "杭州市长乔极地海洋公园",
+        120.223,
+        30.1618,
+        "公园",
+        "Hangzhou Polar Ocean Park",
+        1,
+        {
+          "tags": [
+            "公园绿地"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "湘湖跨湖桥景区",
+        120.2237,
+        30.1558,
+        "湖景",
+        "Xianghu Hangzhou",
+        1,
+        {
+          "tags": [
+            "湖面",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "双溪竹海漂流景区",
+        119.8247,
+        30.4025,
+        "滨水",
+        "Shuangxi Bamboo Sea Hangzhou",
+        1,
+        {
+          "tags": [
+            "江河",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "西湖花港观鱼",
+        120.1333,
+        30.2298,
+        "园林",
+        "Flower Harbor West Lake Hangzhou",
+        0,
+        {
+          "tags": [
+            "公园绿地",
+            "历史建筑"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "曲院风荷",
+        120.1286,
+        30.2499,
+        "湖景",
+        "Quyuan Garden Hangzhou",
+        0,
+        {
+          "tags": [
+            "湖面",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ],
+      [
+        "孤山",
+        120.1375,
+        30.2515,
+        "山景",
+        "Solitary Hill West Lake Hangzhou",
+        0,
+        {
+          "tags": [
+            "山景",
+            "日出日落"
+          ],
+          "axis_deg": 0,
+          "takeoffs": null,
+          "standoff_m": 150,
+          "avoid_m": 0,
+          "source": "工程整理"
+        }
+      ]
+    ]
+  }
+}

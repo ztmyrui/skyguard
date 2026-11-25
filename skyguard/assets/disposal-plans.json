@@ -1,0 +1,68 @@
+{
+  "version": "P11.1",
+  "templates": {
+    "观察": [
+      [
+        "watch",
+        "持续观察",
+        "auto"
+      ]
+    ],
+    "提醒": [
+      [
+        "watch",
+        "持续观察",
+        "auto"
+      ],
+      [
+        "nudge",
+        "发本机提醒",
+        "auto"
+      ],
+      [
+        "call",
+        "记录联系飞手",
+        "manual"
+      ]
+    ],
+    "现场核验": [
+      [
+        "watch",
+        "持续观察",
+        "auto"
+      ],
+      [
+        "dispatch",
+        "安排观察岗核验",
+        "confirm"
+      ],
+      [
+        "notify",
+        "记录区域联络",
+        "confirm"
+      ]
+    ],
+    "紧急协调": [
+      [
+        "watch",
+        "持续观察",
+        "auto"
+      ],
+      [
+        "dispatch",
+        "安排观察岗核验",
+        "confirm"
+      ],
+      [
+        "notify",
+        "记录区域联络",
+        "confirm"
+      ],
+      [
+        "handoff",
+        "生成移交清单",
+        "confirm"
+      ]
+    ]
+  }
+}

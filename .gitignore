@@ -1,0 +1,12 @@
+__pycache__/
+.pytest_cache/
+.venv/
+*.sqlite3
+*.db
+.env
+build/
+dist/
+*.spec.bak
+skyguard/assets/changsha-official-2024.jpg
+skyguard/assets/changsha.geojson
+skyguard/assets/hunan-airspace-202605.npz

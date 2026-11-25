@@ -1,0 +1,96 @@
+{
+  "id": "changsha-official-static-2024",
+  "name": "长沙市城区范围图",
+  "edition": 2024,
+  "publisher": "湖南省自然资源厅",
+  "producer": "湖南省第三测绘院",
+  "review_number": "湘S（2024）151号",
+  "catalog_url": "https://hunan.tianditu.gov.cn/subApp/tjxz/detail.html?type=1001",
+  "online_url": "https://hunan.tianditu.gov.cn/TDTHN/portal/map/index.html",
+  "source_url": "https://hunan.tianditu.gov.cn/minio/tdt-standard-map-service/tdt-standard-map-service/2024/12/25/1长沙市城区范围图8开_20241225094540A025.jpg",
+  "file": "changsha-official-2024.jpg",
+  "width": 4960,
+  "height": 3507,
+  "sha256": "e6287902b7a63d53b7be61b4f264293875878303efc0054f500aa63641e0901b",
+  "scale": 175000,
+  "transform": [
+    [
+      6607.453131694851,
+      32.505499877436165
+    ],
+    [
+      53.84088473660914,
+      -7488.776917805484
+    ],
+    [
+      -745665.8732859,
+      209316.6891031995
+    ]
+  ],
+  "metres_per_pixel_approx": 14.817,
+  "control_points": [
+    {
+      "name": "长沙南站",
+      "lat": 28.1498719,
+      "lon": 113.0596925,
+      "pixel": [
+        2886.36,
+        2183.64
+      ]
+    },
+    {
+      "name": "长沙县人民政府",
+      "lat": 28.249724,
+      "lon": 113.07477,
+      "pixel": [
+        2991.36,
+        1436.36
+      ]
+    },
+    {
+      "name": "湖南省人民政府",
+      "lat": 28.1176515,
+      "lon": 112.9778175,
+      "pixel": [
+        2343.64,
+        2422.27
+      ]
+    }
+  ],
+  "independent_check_points": [
+    {
+      "name": "长沙火车站",
+      "lat": 28.1974439,
+      "lon": 113.0054238,
+      "pixel": [
+        2556.36,
+        1829.09
+      ],
+      "predicted_pixel": [
+        2530.343426800915,
+        1825.6198732449557
+      ],
+      "residual_m": 388.9
+    },
+    {
+      "name": "雨花区人民政府",
+      "lat": 28.1388514,
+      "lon": 113.0322226,
+      "pixel": [
+        2706.36,
+        2262.73
+      ],
+      "predicted_pixel": [
+        2704.2605697475374,
+        2265.2771431916044
+      ],
+      "residual_m": 48.9
+    }
+  ],
+  "coordinate_source": "OpenStreetMap / Nominatim；仅用于开发期配准核对，不在程序中调用服务",
+  "coordinate_source_url": "https://www.openstreetmap.org/copyright",
+  "scope": "城区概览；静态纸图的人工地标配准，不是精确地理底图。观测坐标仍为WGS84。",
+  "display_registration_allowance_m": 500,
+  "limits": "配准核对两点约389米与49米残差；不足以证明全图精度。500米仅为演练显示留量，不是校准置信范围。不得据此宣称米级定位。",
+  "preservation": "原始JPG字节完整保留，标题、审图号、比例尺、监制及编制单位均可通过原图入口查看。公开展示或发布修改叠加图时按来源网站要求核实送审安排。"
+}

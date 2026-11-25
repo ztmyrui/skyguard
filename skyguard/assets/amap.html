@@ -1,0 +1,53 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+document.documentElement.dataset.theme =
+    new URLSearchParams(location.search).get('theme') === 'night' ? 'night' : 'klein';
+</script>
+<style>
+@font-face{font-family:Noto;src:url('NotoSansSC.ttf');font-display:swap}
+:root[data-theme="night"]{
+ --ground:#0F1420;--surface:#171E2C;--ink:#E7EBF3;--muted:#8C96AA;
+ --pri:#F2A93B;--on-pri:#1A1206;--tonal:#232C3E;--tonal-ink:#C9D3E6;
+ --sel:#1F2A40;--line:#4F7BD9;--glass:#171E2CD9;--edge:#222B3D;
+ --pred:#7EA6FF;--dot:#F2A93B;--danger:#FF6F86;--warn:#F2A93B;--ok:#5ED39A;
+}
+:root{
+ --ground:#F4F4F1;--surface:#FFFFFF;--ink:#141414;--muted:#6E6E6A;
+ --pri:#1F3FD6;--on-pri:#FFFFFF;--tonal:#E8ECFD;--tonal-ink:#1F3FD6;
+ --sel:#EDF0FE;--line:#1F3FD6;--glass:#FFFFFFD9;--edge:transparent;
+ --pred:#1F3FD6;--dot:#1F3FD6;--danger:#D1344F;--warn:#B76B00;--ok:#0E8A5F;
+}
+*{box-sizing:border-box}
+html,body,#map{height:100%;margin:0;background:var(--ground);color:var(--ink);font-family:DengXian,Noto,sans-serif}
+::selection{background:var(--sel);color:var(--ink)}
+
+#status:empty{opacity:0}
+#status{transition:opacity .18s ease;position:absolute;z-index:100;top:12px;left:12px;max-width:85%;padding:7px 12px;background:var(--glass);border-radius:999px;box-shadow:0 2px 8px #00000026;font-size:12px;pointer-events:none}
+#setup{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--ground);z-index:110}
+.setup{padding:28px;max-width:440px;background:var(--surface);border:1px solid var(--edge);border-radius:14px;box-shadow:0 2px 8px #00000014}
+h2{font-size:20px;margin:0 0 10px}
+p{font-size:13.5px;line-height:1.6;color:var(--muted)}
+button{border:0;background:var(--pri);color:var(--on-pri);padding:8px 18px;border-radius:999px;font:600 13px DengXian,Noto,sans-serif;cursor:pointer}
+button:focus-visible{outline:2px solid var(--line);outline-offset:3px}
+.marker{background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 9px;white-space:nowrap;font:600 11.5px DengXian,Noto,sans-serif;box-shadow:0 2px 8px #00000026}
+.edit-anchor{position:relative;width:14px;height:14px;box-sizing:border-box;border:2px solid var(--surface);border-radius:50%;background:var(--pri);box-shadow:0 1px 5px #0006}
+.edit-anchor.active{outline:2px solid var(--pri);outline-offset:2px}
+.edit-insert{display:grid;place-items:center;width:21px;height:21px;padding:0;border-radius:50%;border:1px solid var(--pri);background:var(--surface);color:var(--pri);font:700 14px/1 sans-serif;cursor:pointer}
+.edit-anchor.takeoff{border-radius:4px;background:#16835c}
+.edit-anchor.high{background:#e69722}
+.edit-caption{position:absolute;left:12px;top:-24px;padding:3px 7px;color:var(--ink);background:var(--surface);white-space:nowrap;border-radius:6px;font:600 12px DengXian,Noto,sans-serif;box-shadow:0 1px 5px #0003;pointer-events:none}
+.marker.selected{background:var(--pri);color:var(--on-pri)}
+.draw-point{display:grid;place-items:center;width:23px;height:23px;border:2px solid white;border-radius:50%;background:var(--dot);color:var(--on-pri);font:600 12px "Segoe UI Variable",Bahnschrift,"Segoe UI",sans-serif;box-shadow:0 2px 7px #00000033;pointer-events:none}
+.photo-aircraft{position:absolute;z-index:660;width:22px;height:22px;transform:translate(-50%,-50%);pointer-events:none}
+.photo-aircraft svg{position:relative;display:block;width:22px;height:22px}
+.photo-camera-ray{position:absolute;left:50%;bottom:50%;height:55px;border-left:2px solid var(--camera-ray);transform-origin:bottom center}
+:root{--camera-ray:#6936c4;--camera-fill:#8055db60}
+[data-theme=night]{--camera-ray:#e3c5ff;--camera-fill:#b68bff70}
+.photo-camera-ray::before{content:'';position:absolute;top:-4px;left:-6px;border:5px solid transparent;border-bottom-color:var(--camera-ray);border-top:0}
+.photo-camera-ray::after{content:'';position:absolute;bottom:0;left:-37px;width:72px;height:64px;border-radius:50% 50% 0 0;background:var(--camera-fill);clip-path:polygon(50% 100%,0 14%,16% 4%,33% 0,67% 0,84% 4%,100% 14%);z-index:-1}
+.amap-logo,.amap-copyright{visibility:visible!important}
+.sandbox-waypoint{white-space:nowrap;color:#fff;padding:2px 5px;border-radius:5px;font:600 10px sans-serif;box-shadow:0 1px 3px #13223c40}
+</style>
+</head><body><div id="map"></div><div id="status">正在准备高德地图…</div><div id="setup"><div class="setup"><h2 id="heading">连接高德在线地图</h2><p id="message">填写高德 Web 端 Key 和配套安全密钥后，即可显示所选城市的街道地图。</p><button id="configure">填写地图配置</button></div></div>
+<template id="photo-airframe"><!-- photo-airframe --></template>
+<script src="qwebchannel.js"></script><script src="map-core.js"></script><script src="training-map.js"></script><script src="amap.js"></script></body></html>

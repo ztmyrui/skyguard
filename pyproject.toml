@@ -1,0 +1,9 @@
+[project]
+name = "skyguard-desktop"
+version = "0.16.0"
+requires-python = ">=3.11"
+dependencies = ["PySide6", "langgraph", "langgraph-checkpoint-sqlite", "httpx", "numpy", "shapely>=2.1", "cryptography", "geographiclib"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

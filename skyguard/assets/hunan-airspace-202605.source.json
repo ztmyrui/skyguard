@@ -1,0 +1,10 @@
+{
+  "issuer": "湖南省发展和改革委员会",
+  "publication": "https://fgw.hunan.gov.cn/fgw/xxgk_70899/gzdtf/gzdt/202605/t20260513_33975865.html",
+  "official_archive": "https://fgw.hunan.gov.cn/fgw/xxgk_70899/gzdtf/gzdt/202605/33975865/files/664bcd483b7d4a0783a4aebd81134cd5.zip",
+  "archive_sha256": "60c5eab1adffda18f336c98ef2ae2ff9b5291ac3c9e87c0ca5181348f8edbf39",
+  "effective_from": "2026-05-14T00:00:00+08:00",
+  "crs": "EPSG:4326",
+  "cells": 102483,
+  "description": "微型、轻型、小型适飞空域基础快照。与所选范围的相交和覆盖为水平几何计算。"
+}
